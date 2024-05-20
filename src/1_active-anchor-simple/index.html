@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vite + TS</title>
+  <link rel="stylesheet" href="/index.css">
+</head>
+
+<body>
+  <header class="z-50 sticky top-0 bg-white border-b h-[56px] flex items-center">
+    <div class="container mx-auto max-w-screen-xl">
+      TOCのサンプル
+    </div>
+  </header>
+  <div class="container mx-auto max-w-screen-xl md:grid md:grid-cols-[minmax(0,1fr)_minmax(0,300px)] gap-12">
+    <article
+      class="prose max-w-none [&_h1]:bg-slate-200 [&_h2]:bg-slate-200 [&_h3]:bg-slate-200 [&_h4]:bg-slate-200 [&_h5]:bg-slate-200 [&_h6]:bg-slate-200">
+      <!-- article slot -->
+    </article>
+    <aside class="sticky top-[56px] max-h-[calc(100vh-56px)] overflow-y-auto py-4 pr-1">
+      <nav id="toc-container" class="[&_li_li]:pl-4 [&_a]:block [&_a:hover]:bg-slate-100">
+        <!-- toc slot -->
+      </nav>
+    </aside>
+  </div>
+  <script type="module" src="./active-anchor.ts"></script>
+</body>
+
+</html>
