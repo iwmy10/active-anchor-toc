@@ -5,6 +5,7 @@ import { resolve } from "path";
 import { globSync } from "glob";
 
 export default defineConfig({
+  base: "/<REPO>/",
   root: resolve(__dirname, "src"),
   resolve: {},
   build: {
