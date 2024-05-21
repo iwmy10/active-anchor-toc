@@ -28,6 +28,9 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
+      # All steps after this one will have env variable `GHA_BRANCH` passed to them.
+      # - run: echo ::set-env name=GHA_BRANCH::$(echo $GITHUB_REF | awk -F / '{print $3}')
+      # shell: bash
       - name: Checkout
         uses: actions/checkout@v4
       - name: Set up Node
@@ -39,6 +42,8 @@ jobs:
         run: npm ci
       - name: Build
         run: npm run build
+        env:
+          BASE_PATH: ${{ github.event.repository.name }}
       - name: Setup Pages
         uses: actions/configure-pages@v4
       - name: Upload artifact
