@@ -22,6 +22,21 @@ const addBasePathToHref = (): Plugin => {
   };
 };
 
+const insertMarkdownToHtml = async (
+  ...params: Parameters<typeof markdownToHtml>
+) => {
+  const [markdown] = params;
+  const { article, toc } = await markdownToHtml(markdown);
+  return {
+    name: "html-transform",
+    transformIndexHtml(html) {
+      return html
+        .replace("<!-- article slot -->", article)
+        .replace("<!-- toc slot -->", toc);
+    },
+  };
+};
+
 export default defineConfig({
   base: process.env.BASE_PATH || "/",
   root: resolve(__dirname, "src"),
@@ -34,17 +49,6 @@ export default defineConfig({
   },
   plugins: [
     addBasePathToHref(),
-    (async () => {
-      const markdown = readFileSync("./content.md");
-      const { article, toc } = await markdownToHtml(markdown);
-      return {
-        name: "html-transform",
-        transformIndexHtml(html) {
-          return html
-            .replace("<!-- article slot -->", article)
-            .replace("<!-- toc slot -->", toc);
-        },
-      };
-    })(),
+    insertMarkdownToHtml(readFileSync("./content.md")),
   ],
 });
