@@ -3,7 +3,6 @@
 
 <head>
   <meta charset="UTF-8" />
-  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Vite + TS</title>
   <link rel="stylesheet" href="/index.css">
@@ -12,7 +11,11 @@
 <body>
   <header class="z-50 sticky top-0 bg-white border-b h-[56px] flex items-center">
     <div class="container mx-auto max-w-screen-xl">
-      TOCのサンプル
+      <nav class="space-x-1 inline-block [&_a]:p-2 [&_a:hover]:bg-slate-100">
+        <a href="/1_percentage-simple/">サンプル1</a>
+        <a href="/2_percentage/">サンプル2</a>
+        <a href="/4_px-mdn/" class="text-blue-600">サンプル4</a>
+      </nav>
     </div>
   </header>
   <div class="container mx-auto max-w-screen-xl md:grid md:grid-cols-[minmax(0,1fr)_minmax(0,300px)] gap-12">
