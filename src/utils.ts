@@ -3,13 +3,14 @@ export function getLinkId(a: HTMLAnchorElement) {
   return a.hash.replace("#", "");
 }
 
+type CreateRootMarginRectDivOptions = {
+  top: string;
+  bottom: string;
+};
 export function createRootMarginRectDiv({
   top,
   bottom,
-}: {
-  top: string;
-  bottom: string;
-}) {
+}: CreateRootMarginRectDivOptions) {
   const div = document.createElement("div");
   div.classList.add(
     "fixed",
@@ -26,6 +27,16 @@ export function createRootMarginRectDiv({
   div.style.bottom = bottom;
 
   document.body.appendChild(div);
+
+  const updatePosition = ({
+    top,
+    bottom,
+  }: Partial<CreateRootMarginRectDivOptions>) => {
+    top !== undefined && (div.style.top = top);
+    bottom !== undefined && (div.style.bottom = bottom);
+  };
+
+  return { updatePosition };
 }
 
 export function setScrollPaddingTop(value: string) {
