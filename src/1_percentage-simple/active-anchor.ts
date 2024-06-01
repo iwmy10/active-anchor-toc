@@ -42,7 +42,7 @@ const activeAnchor = () => {
       activeSectionHeadingId = intersectingHeading.target.id;
       // // TOCのaタグの状態を更新
       anchorLinks.forEach((anchorLink) => {
-        if (getLinkId(anchorLink) === activeSectionHeadingId) {
+        if (getLinkId(anchorLink) === encodeURI(activeSectionHeadingId)) {
           anchorLink.setAttribute("aria-current", "true");
           anchorLink.classList.add("text-blue-600");
         } else {

@@ -89,7 +89,7 @@ function createHeadingIdByObservedElement({
 
   let currentHeadingId: string;
   observedElements.forEach((element) => {
-    const id = element.id;
+    const id = encodeURI(element.id);
     if (id && headingIds.includes(id)) {
       currentHeadingId = id;
     }
